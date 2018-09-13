@@ -1,4 +1,4 @@
-package ru.vood.spring.rest.hello;
+package ru.vood.spring.soap;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
