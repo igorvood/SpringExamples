@@ -1,4 +1,4 @@
-package com.javarticle.spring.rest;
+package ru.vood.spring.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.javarticle.spring.rest;
+package ru.vood.spring.rest;
 
 public class Employee {
     private String id;

@@ -1,4 +1,4 @@
-package com.javarticle.spring.rest.hello;
+package ru.vood.spring.rest.hello;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;

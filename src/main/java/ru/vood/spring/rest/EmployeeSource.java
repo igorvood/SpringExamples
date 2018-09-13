@@ -1,4 +1,4 @@
-package com.javarticle.spring.rest;
+package ru.vood.spring.rest;
 
 import java.util.Collection;
 import java.util.HashMap;
