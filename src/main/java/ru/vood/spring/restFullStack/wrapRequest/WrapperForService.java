@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -219,6 +220,18 @@ public interface WrapperForService {
     default <R> WrappedObject<R> getOk(Page page, List<R> apply) {
         //final Page page1 = page == NULL_PAGE ? null : page;
         return new WrappedObject<>(page, apply);
+    }
+
+    default <R> WrappedObject<R> getOk(List<R> apply) {
+        return new WrappedObject<>(NULL_PAGE, apply);
+    }
+
+    default <R> WrappedObject<R> getOk(R apply) {
+        return new WrappedObject<>(NULL_PAGE, Collections.singletonList(apply));
+    }
+
+    default <R> WrappedObject<R> getOk(Page page, R apply) {
+        return new WrappedObject<>(page, Collections.singletonList(apply));
     }
 
     @Getter
