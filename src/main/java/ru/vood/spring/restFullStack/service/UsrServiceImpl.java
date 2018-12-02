@@ -34,14 +34,14 @@ public class UsrServiceImpl implements UsrService {
 
     @Override
     @Transactional(readOnly = true)
-    public WrapperForService.WrappedObjectForService<UsrDTO> findOne(Long id) {
+    public WrapperForService.WrappedObject<UsrDTO> findOne(Long id) {
         return wrapper.wrapObject(first(usrRepository::findOne)
                 .andThen(usrConvertService::convertToDto), id);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public WrapperForService.WrappedObjectForService<UsrDTO> findAllPage(Integer numPage, Integer sizePage) {
+    public WrapperForService.WrappedObject<UsrDTO> findAllPage(Integer numPage, Integer sizePage) {
         return wrapper.wrapList(first(usrRepository::findAllPage)
                         .andThen(usrConvertService::convertToDto)
                 , numPage, sizePage);
@@ -50,21 +50,21 @@ public class UsrServiceImpl implements UsrService {
 
     @Override
     @Transactional(readOnly = true)
-    public WrapperForService.WrappedObjectForService<User> findAllFilteredLimit(SearchData searchData) {
+    public WrapperForService.WrappedObject<User> findAllFilteredLimit(SearchData searchData) {
         return wrapper.wrapList(first(usrRepository::findAllFilteredLimit)
                 , searchData);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public WrapperForService.WrappedObjectForService<UsrDTO> findAllLimit(Integer limit) {
+    public WrapperForService.WrappedObject<UsrDTO> findAllLimit(Integer limit) {
         return wrapper.wrapList(first(usrRepository::findAllLimit)
                         .andThen(usrConvertService::convertToDto)
                 , limit);
     }
 
     @Override
-    public WrapperForService.WrappedObjectForService<UsrDTO> save(UsrDTO entity) {
+    public WrapperForService.WrappedObject<UsrDTO> save(UsrDTO entity) {
         final Function<UsrDTO, UsrEntity> objectObjectFunction = usrConvertService::convertToEntity;
         final Function<UsrDTO, List<UsrDTO>> usrDTOListFunction = first(objectObjectFunction)
                 .andThen(usrRepository::save)
@@ -73,14 +73,14 @@ public class UsrServiceImpl implements UsrService {
     }
 
     @Override
-    public WrapperForService.WrappedObjectForService<UsrDTO> findByLogin(String id) {
+    public WrapperForService.WrappedObject<UsrDTO> findByLogin(String id) {
         return wrapper.wrapObject(first(usrRepository::findByLogin)
                         .andThen(usrConvertService::convertToDto)
                 , id);
     }
 
     @Override
-    public WrapperForService.WrappedObjectForService<UsrDTO> findAll() {
+    public WrapperForService.WrappedObject<UsrDTO> findAll() {
         return wrapper.wrapList(first(usrRepository::findAll)
                         .andThen(usrConvertService::convertToDto)
                 , null);

@@ -9,18 +9,18 @@ import ru.vood.spring.restFullStack.wrapRequest.WrapperForService;
 
 public interface UsrService extends BeginnerOfChainFunctionInterface {
 
-    WrapperForService.WrappedObjectForService<UsrDTO> findOne(Long id);
+    WrapperForService.WrappedObject<UsrDTO> findOne(Long id);
 
-    WrapperForService.WrappedObjectForService<UsrDTO> findAllPage(Integer numPage, Integer sizePage);
+    WrapperForService.WrappedObject<UsrDTO> findAllPage(Integer numPage, Integer sizePage);
 
-    WrapperForService.WrappedObjectForService<User> findAllFilteredLimit(SearchData searchData);
+    WrapperForService.WrappedObject<User> findAllFilteredLimit(SearchData searchData);
 
-    WrapperForService.WrappedObjectForService<UsrDTO> findAllLimit(Integer limit);
+    WrapperForService.WrappedObject<UsrDTO> findAllLimit(Integer limit);
 
-    WrapperForService.WrappedObjectForService<UsrDTO> save(UsrDTO entity);
+    WrapperForService.WrappedObject<UsrDTO> save(UsrDTO entity);
 
-    WrapperForService.WrappedObjectForService<UsrDTO> findByLogin(String id);
+    WrapperForService.WrappedObject<UsrDTO> findByLogin(String id);
 
-    WrapperForService.WrappedObjectForService<UsrDTO> findAll();
+    WrapperForService.WrappedObject<UsrDTO> findAll();
 
 }

@@ -8,14 +8,14 @@ import ru.vood.spring.restFullStack.wrapRequest.WrapperForController;
 
 public interface UsrRestControllerInterface<DTO extends UsrDTO> extends BeginnerOfChainFunctionInterface {
 
-    WrapperForController.WrappedObjectForRest<DTO> findOne(Long id);
+    WrapperForController.WrappedObject<DTO> findOne(Long id);
 
-    WrapperForController.WrappedObjectForRest<DTO> findAllPage(Integer numPage, Integer sizePage);
+    WrapperForController.WrappedObject<DTO> findAllPage(Integer numPage, Integer sizePage);
 
-    WrapperForController.WrappedObjectForRest<User> findAllFilteredLimit(SearchData searchData);
+    WrapperForController.WrappedObject<User> findAllFilteredLimit(SearchData searchData);
 
-    WrapperForController.WrappedObjectForRest<DTO> findAllLimit(Integer limit);
+    WrapperForController.WrappedObject<DTO> findAllLimit(Integer limit);
 
-    WrapperForController.WrappedObjectForRest<DTO> save(DTO entity);
+    WrapperForController.WrappedObject<DTO> save(DTO entity);
 
 }

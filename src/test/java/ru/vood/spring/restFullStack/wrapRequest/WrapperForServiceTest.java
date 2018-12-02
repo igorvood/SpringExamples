@@ -31,51 +31,51 @@ public class WrapperForServiceTest {
 
     @Test
     public void wrapListNoPageOk() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapList(listSupplierOk);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapList(listSupplierOk);
         Assert.assertEquals(Page.NULL_PAGE, stringWr.getPage());
         Assert.assertArrayEquals(listSupplierOk.get().toArray(), stringWr.getObjectList().toArray());
     }
 
     @Test(expected = RuntimeException.class)
     public void wrapListNoPageErr() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapList(listSupplierErr);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapList(listSupplierErr);
     }
 
     @Test
     public void wrapListWithPageOk() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapList(page, listSupplierOk);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapList(page, listSupplierOk);
         Assert.assertEquals(page, stringWr.getPage());
         Assert.assertArrayEquals(listSupplierOk.get().toArray(), stringWr.getObjectList().toArray());
     }
 
     @Test(expected = RuntimeException.class)
     public void wrapListWithPageErr() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapList(page, listSupplierErr);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapList(page, listSupplierErr);
     }
 
     //--------------------------------------------
     @Test
     public void wrapObjectNoPageOk() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapObject(supplierOk);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapObject(supplierOk);
         Assert.assertEquals(Page.NULL_PAGE, stringWr.getPage());
         Assert.assertArrayEquals(listSupplierOk.get().toArray(), stringWr.getObjectList().toArray());
     }
 
     @Test(expected = RuntimeException.class)
     public void wrapObjectNoPageErr() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapObject(supplierErr);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapObject(supplierErr);
     }
 
     @Test
     public void wrapObjectWithPageOk() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapObject(page, supplierOk);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapObject(page, supplierOk);
         Assert.assertEquals(page, stringWr.getPage());
         Assert.assertArrayEquals(listSupplierOk.get().toArray(), stringWr.getObjectList().toArray());
     }
 
     @Test(expected = RuntimeException.class)
     public void wrapObjectWithPageErr() {
-        final WrapperForService.WrappedObjectForService<String> stringWr = wrapperForService.wrapObject(page, supplierErr);
+        final WrapperForService.WrappedObject<String> stringWr = wrapperForService.wrapObject(page, supplierErr);
     }
 
     @Test
@@ -87,12 +87,12 @@ public class WrapperForServiceTest {
 
     @Test(expected = RuntimeException.class)
     public void getError() {
-        final WrapperForService.WrappedObjectForService<Object> error = wrapperForService.getError(new Exception());
+        final WrapperForService.WrappedObject<Object> error = wrapperForService.getError(new Exception());
     }
 
     @Test
     public void getOk() {
-        final WrapperForService.WrappedObjectForService<String> ok = wrapperForService.getOk(Page.NULL_PAGE, asList("1"));
+        final WrapperForService.WrappedObject<String> ok = wrapperForService.getOk(Page.NULL_PAGE, asList("1"));
         Assert.assertArrayEquals(listSupplierOk.get().toArray(), ok.getObjectList().toArray());
         Assert.assertEquals(Page.NULL_PAGE, ok.getPage());
     }
