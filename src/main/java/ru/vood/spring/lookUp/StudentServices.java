@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentServices {
 
+    public final SchoolNotification schoolNotification;
+
     @Autowired
-    public SchoolNotification schoolNotification;
+    public StudentServices(SchoolNotification schoolNotification) {
+        this.schoolNotification = schoolNotification;
+    }
 
     @Lookup
     public SchoolNotification getNotification() {

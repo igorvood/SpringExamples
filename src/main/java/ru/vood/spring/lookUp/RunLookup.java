@@ -11,8 +11,12 @@ public class RunLookup implements CommandLineRunner {
 
     protected static final Logger logger = Logger.getLogger(RunLookup.class.getName());
 
+    private final StudentServices services;
+
     @Autowired
-    private StudentServices services;
+    public RunLookup(StudentServices services) {
+        this.services = services;
+    }
 
 /*
     @PostConstruct

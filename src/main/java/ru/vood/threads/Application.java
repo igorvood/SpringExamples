@@ -20,9 +20,9 @@ public class Application {
         futureList.add(application.gitHubLookupService.findUser("Spring-Projects"));
 
         while (true) {
-            final Optional<Future<User>> first = futureList.stream().filter(userFuture -> userFuture.isDone() == false).findFirst();
+            final Optional<Future<User>> first = futureList.stream().filter(userFuture -> !userFuture.isDone()).findFirst();
 
-            if (first.isPresent() == false) {
+            if (!first.isPresent()) {
                 break;
             }
             i++;
@@ -45,9 +45,9 @@ public class Application {
         final CompletableFuture<User> completableFuture = new CompletableFuture();
 
         while (true) {
-            final Optional<Future<User>> first = futureList.stream().filter(userFuture -> userFuture.isDone() == false).findFirst();
+            final Optional<Future<User>> first = futureList.stream().filter(userFuture -> !userFuture.isDone()).findFirst();
 
-            if (first.isPresent() == false) {
+            if (!first.isPresent()) {
                 break;
             }
             i++;
@@ -67,18 +67,18 @@ public class Application {
         }
 
         while (true) {
-            final Optional<CompletableFuture<Void>> first = futureList.stream().filter(userFuture -> userFuture.isDone() == false).findFirst();
+            final Optional<CompletableFuture<Void>> first = futureList.stream().filter(userFuture -> !userFuture.isDone()).findFirst();
 
-            if (first.isPresent() == false) {
+            if (!first.isPresent()) {
                 break;
             }
             if (i % 10000000 == 0) {
                 final long count = futureList.stream()
-                        .filter(userFuture -> userFuture.isDone() == false)
+                        .filter(userFuture -> !userFuture.isDone())
                         .count();
                 System.out.println(("осталось отраотать " + count));
                 final Optional<CompletableFuture<Void>> first1 = futureList.stream()
-                        .filter(userFuture -> userFuture.isDone() == true)
+                        .filter(userFuture -> userFuture.isDone())
                         .findFirst();
 //                System.out.println(first1.get().get().getClass().toString());
                 i = 0;
@@ -110,19 +110,19 @@ public class Application {
         }
 
         while (true) {
-            final Optional<Future<User>> first = futureList.stream().filter(userFuture -> userFuture.isDone() == false).findFirst();
+            final Optional<Future<User>> first = futureList.stream().filter(userFuture -> !userFuture.isDone()).findFirst();
 
-            if (first.isPresent() == false) {
+            if (!first.isPresent()) {
                 break;
             }
             if (i % 10000000 == 0) {
                 final long count = futureList.stream()
-                        .filter(userFuture -> userFuture.isDone() == false)
+                        .filter(userFuture -> !userFuture.isDone())
                         .count();
                 System.out.println(("осталось отработать " + count));
                 i = 0;
                 final Optional<Future<User>> first1 = futureList.stream()
-                        .filter(userFuture -> userFuture.isDone() == true)
+                        .filter(userFuture -> userFuture.isDone())
                         .findFirst();
                 System.out.println(first1.get().get().toString());
             }

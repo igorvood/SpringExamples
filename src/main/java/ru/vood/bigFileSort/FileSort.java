@@ -1,13 +1,15 @@
 package ru.vood.bigFileSort;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.*;
 
 public class FileSort<T extends Comparable<T>> implements Iterable<T> {
     private int bufferSize = 10000;
-    private List<FileSortStorage> partFiles = new LinkedList<FileSortStorage>();
+    private List<FileSortStorage> partFiles = new LinkedList<>();
     private Iterator<T> source;
-    private List<T> part = new LinkedList<T>();
+    private List<T> part = new LinkedList<>();
 
     /**
      * Конструктор по умолчанию, ничего не делает
@@ -53,6 +55,7 @@ public class FileSort<T extends Comparable<T>> implements Iterable<T> {
     /**
      * Получение результата в виде итератора
      */
+    @NotNull
     public Iterator<T> iterator() {
         if (partFiles.size() == 0) {
             // маленькая оптимизация, если всё уместилось в память
@@ -60,8 +63,8 @@ public class FileSort<T extends Comparable<T>> implements Iterable<T> {
         }
         return new Iterator<T>() {
             Long t = 0L;
-            List<T> items = new ArrayList<T>();
-            List<Iterator<T>> iterators = new ArrayList<Iterator<T>>();
+            List<T> items = new ArrayList<>();
+            List<Iterator<T>> iterators = new ArrayList<>();
             Integer minIdx = null;
 
             // динамическая инициализация итератора, вместо конструктора

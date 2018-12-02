@@ -11,8 +11,12 @@ public class RunRest implements CommandLineRunner {
 
     protected static final Logger logger = Logger.getLogger(RunRest.class.getName());
 
+    private final RESTClientExample clientExample;
+
     @Autowired
-    private RESTClientExample clientExample;
+    public RunRest(RESTClientExample clientExample) {
+        this.clientExample = clientExample;
+    }
 
     @Override
     public void run(String... args) {

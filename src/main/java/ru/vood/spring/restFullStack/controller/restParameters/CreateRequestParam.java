@@ -22,7 +22,7 @@ public class CreateRequestParam {
 
     @Data
     public class AccessAndDate {
-        private Long acсess;
-        private Date dateAcсess;
+        private Long access;
+        private Date dateAccess;
     }
 }

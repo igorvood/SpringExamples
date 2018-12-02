@@ -1,5 +1,7 @@
 package ru.vood.bigFileSort;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.util.Iterator;
 import java.util.List;
@@ -34,6 +36,7 @@ public class FileSortStorageObject<T> implements FileSortStorage<T> {
      * Итератор по файлу-хранилищу объектов
      */
 
+    @NotNull
     public Iterator<T> iterator() {
         try {
             return new Iterator<T>() {

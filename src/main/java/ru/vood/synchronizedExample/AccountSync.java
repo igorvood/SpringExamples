@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountSynch {
+public class AccountSync {
     private int id;
     private long balance;
 

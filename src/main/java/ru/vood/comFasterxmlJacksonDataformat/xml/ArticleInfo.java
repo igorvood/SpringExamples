@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JacksonXmlRootElement(localName = "article", namespace = "com.concretepage")
+@JacksonXmlRootElement(localName = "article", namespace = "com.concretePage")
 public class ArticleInfo {
     @JacksonXmlProperty(localName = "articleId")
     private long articleId;

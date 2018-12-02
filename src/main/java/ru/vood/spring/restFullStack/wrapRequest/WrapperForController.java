@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.vood.spring.restFullStack.consts.CommonStatus;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -213,7 +213,7 @@ public interface WrapperForController {
 
 
     default <T> WrappedObject<T> getError(Exception e) {
-        final ErrorMessage errorMessage = new ErrorMessage(Arrays.asList(e.getMessage()));
+        final ErrorMessage errorMessage = new ErrorMessage(Collections.singletonList(e.getMessage()));
         return new WrappedObject<>(CommonStatus.ERROR, null, errorMessage, null);
     }
 

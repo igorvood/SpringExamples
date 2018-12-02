@@ -4,24 +4,19 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.vood.spring.restFullStack.consts.CommonStatus;
 
+import java.util.Collections;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import static java.util.Arrays.asList;
 
 public class WrapperForControllerTest {
 
     final Supplier<WrapperForService.WrappedObject<String>> supplierError = () -> {
-        if (1 == 1)
-            throw new RuntimeException();
-        return null;
+        throw new RuntimeException();
     };
     final Function<String, ErrorMessage> validationFunctionOk = s -> null;
-    final Function<String, ErrorMessage> validationFunctionError = s -> new ErrorMessage(asList("Error"));
+    final Function<String, ErrorMessage> validationFunctionError = s -> new ErrorMessage(Collections.singletonList("Error"));
     final Function<String, WrapperForService.WrappedObject<String>> longListFunctionError = s -> {
-        if (1 == 1)
-            throw new RuntimeException();
-        return supplierError.get();
+        throw new RuntimeException();
     };
     WrapperForController wrapperForController = new WrapperForController() {
     };
@@ -39,7 +34,7 @@ public class WrapperForControllerTest {
         Assert.assertNull(stringWrappedObject.getContext().getContext());
         Assert.assertNotNull(stringWrappedObject.getContext().getPage());
         Assert.assertEquals(stringWrappedObject.getObjectList().size(), stringWrappedObject.getContext().getPage().getTotalRecords());
-        Assert.assertEquals(null, stringWrappedObject.getErrorMessages());
+        Assert.assertNull(stringWrappedObject.getErrorMessages());
         Assert.assertArrayEquals(supplierOk.get().getObjectList().toArray(), stringWrappedObject.getObjectList().toArray());
     }
 
@@ -83,19 +78,19 @@ public class WrapperForControllerTest {
     @Test
     public void isNotValidOk() {
         final boolean notValid = wrapperForController.isNotValid(null);
-        Assert.assertEquals(false, notValid);
+        Assert.assertFalse(notValid);
     }
 
     @Test
     public void isNotValidOk1() {
         final boolean notValid = wrapperForController.isNotValid(new ErrorMessage());
-        Assert.assertEquals(false, notValid);
+        Assert.assertFalse(notValid);
     }
 
     @Test
     public void isNotValidError() {
-        final boolean notValid = wrapperForController.isNotValid(new ErrorMessage(asList("1")));
-        Assert.assertEquals(true, notValid);
+        final boolean notValid = wrapperForController.isNotValid(new ErrorMessage(Collections.singletonList("1")));
+        Assert.assertTrue(notValid);
     }
 
     @Test

@@ -3,26 +3,21 @@ package ru.vood.spring.restFullStack.wrapRequest;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static java.util.Arrays.asList;
-
 
 public class WrapperForServiceTest {
 
-    final Supplier<List<String>> listSupplierOk = () -> asList("1");
+    final Supplier<List<String>> listSupplierOk = () -> Collections.singletonList("1");
     final Supplier<List<String>> listSupplierErr = () -> {
-        if (1 == 1)
-            throw new RuntimeException("Error");
-        return asList("2");
+        throw new RuntimeException("Error");
     };
     final Supplier<String> supplierOk = () -> "1";
     final Supplier<String> supplierErr = () -> {
-        if (1 == 1)
-            throw new RuntimeException("Error");
-        return "2";
+        throw new RuntimeException("Error");
     };
     WrapperForService wrapperForService = new WrapperForService() {
     };
@@ -92,7 +87,7 @@ public class WrapperForServiceTest {
 
     @Test
     public void getOk() {
-        final WrapperForService.WrappedObject<String> ok = wrapperForService.getOk(Page.NULL_PAGE, asList("1"));
+        final WrapperForService.WrappedObject<String> ok = wrapperForService.getOk(Page.NULL_PAGE, Collections.singletonList("1"));
         Assert.assertArrayEquals(listSupplierOk.get().toArray(), ok.getObjectList().toArray());
         Assert.assertEquals(Page.NULL_PAGE, ok.getPage());
     }

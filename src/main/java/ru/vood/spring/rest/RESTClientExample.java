@@ -6,8 +6,13 @@ import org.springframework.web.client.RestTemplate;
 
 @Component("restClient")
 public class RESTClientExample {
+
+    private final RestTemplate restTemplate;
+
     @Autowired
-    private RestTemplate restTemplate;
+    public RESTClientExample(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public String getAllEmployees() {
         return restTemplate.getForObject("http://localhost:8070/employees", String.class);

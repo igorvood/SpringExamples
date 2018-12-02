@@ -9,8 +9,8 @@ import java.util.concurrent.Callable;
 @AllArgsConstructor
 public class Pay implements Callable<Boolean> {
 
-    private AccountSynch account;
-    private AccountSynch account1;
+    private AccountSync account;
+    private AccountSync account1;
     private long sum;
 
 

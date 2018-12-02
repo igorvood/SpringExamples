@@ -8,7 +8,7 @@ public class Test {
         System.out.println("Test start");
         // создаём класс-сортировщик
 
-        FileSort<Double> sort = new FileSort<Double>(
+        FileSort<Double> sort = new FileSort<>(
                 // в конструктор передаём итератор - источник данных
                 // у нас он просто генерирует случайные числа
                 new Iterator<Double>() {

@@ -14,8 +14,7 @@ public class UsrConvertService extends AbstractConvert<UsrDTO, UsrEntity> {
 
     @Override
     public UsrDTO convertToDto(UsrEntity usrEntity) {
-        final UsrDTO map = modelMapper.map(usrEntity, UsrDTO.class);
-        return map;
+        return modelMapper.map(usrEntity, UsrDTO.class);
     }
 
     @Override

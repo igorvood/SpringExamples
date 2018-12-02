@@ -12,8 +12,8 @@ public class MainLock {
         Thread.sleep(10000);
 
         ExecutorService executorService = Executors.newCachedThreadPool();
-        AccountSynch account = new AccountSynch(1, 100, new ReentrantLock());
-        AccountSynch account2 = new AccountSynch(2, 200, new ReentrantLock());
+        AccountSync account = new AccountSync(1, 100, new ReentrantLock());
+        AccountSync account2 = new AccountSync(2, 200, new ReentrantLock());
 
         Pay pay = new Pay(account, account2, 50);
         Pay pay2 = new Pay(account2, account, 20);
