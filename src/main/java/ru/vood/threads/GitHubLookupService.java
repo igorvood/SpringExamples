@@ -30,7 +30,7 @@ public class GitHubLookupService implements Callable<User>, Runnable {
     }
 
     @Override
-    public User call() throws Exception {
+    public User call() {
         return findUser1("qqqq");
     }
 

@@ -29,7 +29,6 @@ public class Application {
         }
 
         System.out.println(i);
-        ;
     }
 
     private static void test2() {
@@ -57,7 +56,7 @@ public class Application {
         System.out.println(i);
     }
 
-    private static void test3() throws Exception {
+    private static void test3() {
         int i = 0;
         final Application application = new Application();
 
@@ -135,10 +134,5 @@ public class Application {
 
     public static void main(String... args) throws Exception {
         test4();
-
-        //FutureTask futureTask = new FutureTask(() -> System.out.println(Thread.currentThread().getName() + " - " + new Date().toString()));
-        //FutureTask futureTask = new FutureTask(Application::test4);
-
-
     }
 }

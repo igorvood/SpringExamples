@@ -10,6 +10,6 @@ public class RESTClientExample {
     private RestTemplate restTemplate;
 
     public String getAllEmployees() {
-        return restTemplate.getForObject("http://localhost:8080/employees", String.class);
+        return restTemplate.getForObject("http://localhost:8070/employees", String.class);
     }
 }

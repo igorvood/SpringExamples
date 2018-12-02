@@ -1,0 +1,54 @@
+package ru.vood.spring.restFullStack.security;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import ru.vood.spring.restFullStack.entity.UsrEntity;
+
+import java.util.Collection;
+
+
+public class UserDetailsImpl implements UserDetails {
+
+    private final UsrEntity usrEntity;
+
+    public UserDetailsImpl(UsrEntity usrEntity) {
+        this.usrEntity = usrEntity;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return usrEntity.getUsrPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return usrEntity.getUsrFullName();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        final String usrPwdExpired = usrEntity.getUsrPwdExpired();
+        return usrPwdExpired != null & usrPwdExpired.equals("1");
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        final String usrPwdExpired = usrEntity.getUsrLocked();
+        return usrPwdExpired != null & usrPwdExpired.equals("1");
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isAccountNonExpired();
+    }
+}

@@ -1,0 +1,40 @@
+package ru.vood.spring.restFullStack.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.GenericFilterBean;
+import ru.vood.spring.restFullStack.entity.UsrEntity;
+import ru.vood.spring.restFullStack.repository.intf.UsrRepository;
+
+import javax.annotation.PostConstruct;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import java.io.IOException;
+
+
+//@Component
+@Deprecated
+public class AuthenticationFilter extends GenericFilterBean {
+
+    private UsrService usrRepository;
+
+    private UsrEntity usrEntity;
+
+    @Autowired
+    public AuthenticationFilter(UsrService usrRepository) {
+        this.usrRepository = usrRepository;
+    }
+
+    @PostConstruct
+    public void init() {
+        usrEntity = usrRepository.findOne(17L);
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        SecurityContextHolder.getContext().setAuthentication(new UserAuthentication(usrEntity));
+        chain.doFilter(request, response);
+    }
+}
