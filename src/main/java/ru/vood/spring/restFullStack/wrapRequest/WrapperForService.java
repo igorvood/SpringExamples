@@ -2,7 +2,6 @@ package ru.vood.spring.restFullStack.wrapRequest;
 
 import io.vavr.*;
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +12,6 @@ import java.util.function.Supplier;
 
 import static ru.vood.spring.restFullStack.wrapRequest.Page.NULL_PAGE;
 
-@Component
 public interface WrapperForService {
 
     default <R> WrappedObject<R> wrapList(Supplier<List<R>> longListFunction) {

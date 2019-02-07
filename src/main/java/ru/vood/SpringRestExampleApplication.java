@@ -1,19 +1,21 @@
 package ru.vood;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 @SpringBootApplication
-/*
+
 @EnableAutoConfiguration
 @ComponentScan
-*/
+
 public class SpringRestExampleApplication {
 
 /*
