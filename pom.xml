@@ -181,9 +181,10 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <bindingDirectory>${project.basedir}/src/main/resources/xml/</bindingDirectory>
                     <schemaDirectory>${project.basedir}/src/main/resources/xml/</schemaDirectory>
-                    <outputDirectory>${project.build.outputDirectory}/generated-sources</outputDirectory>
-                    <clearOutputDir>false</clearOutputDir>
+                    <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                    <clearOutputDir>true</clearOutputDir>
                 </configuration>
             </plugin>
             <!-- end::xsd[] -->
