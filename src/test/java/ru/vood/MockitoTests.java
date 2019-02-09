@@ -14,6 +14,7 @@ import static org.mockito.Mockito.*;
 //пояснения тут https://habr.com/ru/post/243155/
 public class MockitoTests {
 
+    //    @MockBean
     @Test
     public void iterator_will_return_hello_world() {
         //подготавливаем
